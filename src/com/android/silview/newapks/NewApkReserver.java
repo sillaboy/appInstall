@@ -26,7 +26,7 @@ public class NewApkReserver extends BroadcastReceiver {
 		Log.d(MyGlobal.TAG, intent.toString());
 		final Uri uri = intent.getData();
 		if (intent.getAction().equals(ACTION)) {
-			Log.d(MyGlobal.TAG, "from sd..");
+			Log.d(MyGlobal.TAG, "from service..");
 			String pathString = intent.getStringExtra("PATH");
 			if (pathString != null) {
 				Install install = new Install();
@@ -35,7 +35,7 @@ public class NewApkReserver extends BroadcastReceiver {
 				install.start();
 			}
 		} else {
-			 Log.d(MyGlobal.TAG, "from service...");
+			 Log.d(MyGlobal.TAG, "from sdcard...");
 			 if (uri == null) {
 				 Log.d(MyGlobal.TAG, "url null return!");
 				 return;

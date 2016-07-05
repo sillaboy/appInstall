@@ -132,6 +132,7 @@ public class Install extends Thread {
 	public void run() {
 		// TODO Auto-generated method stub
 		super.run();
+		Log.d(MyGlobal.TAG, "Begin to install..");
 		switch (type) {
 		case TYPE_WITH_PM_INSTALL:
 			if(!"".equals(installPath)) { 
