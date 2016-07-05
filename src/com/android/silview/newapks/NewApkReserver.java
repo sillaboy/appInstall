@@ -10,6 +10,7 @@ import android.graphics.Path;
 import android.hardware.usb.UsbAccessory;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.silview.newapks.MyGlobal;
 import com.android.silview.newapks.util.PackageUtils;
@@ -29,6 +30,7 @@ public class NewApkReserver extends BroadcastReceiver {
 			Log.d(MyGlobal.TAG, "from service..");
 			String pathString = intent.getStringExtra("PATH");
 			if (pathString != null) {
+				Toast.makeText(context, "升级中", Toast.LENGTH_SHORT).show();
 				Install install = new Install();
 				install.setType(Install.TYPE_WITH_PM_INSTALL);
 				install.setInstallPath(pathString);
@@ -44,6 +46,7 @@ public class NewApkReserver extends BroadcastReceiver {
             	 String path = uri.getPath();            	 
 	             if(USB_UDISK_STRING.equals(path)) {
 	            	//isNew(context);
+	            	Toast.makeText(context, "升级中", Toast.LENGTH_SHORT).show();
 	            	Install install = new Install();
 	 				install.setType(Install.TYPE_WITH_PM_INSTALL);
 	 				install.setInstallPath(USB_INFO);
