@@ -1,5 +1,8 @@
 package com.android.silview.newapks;
 
+import java.io.File;
+import java.io.IOException;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -20,9 +23,10 @@ public class NewApkReserver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
-		Log.d(MyGlobal.TAG, intent.getAction() + intent.getExtras().toString());
+		Log.d(MyGlobal.TAG, intent.toString());
 		final Uri uri = intent.getData();
 		if (intent.getAction().equals(ACTION)) {
+			Log.d(MyGlobal.TAG, "from sd..");
 			String pathString = intent.getStringExtra("PATH");
 			if (pathString != null) {
 				Install install = new Install();
@@ -31,15 +35,19 @@ public class NewApkReserver extends BroadcastReceiver {
 				install.start();
 			}
 		} else {
+			 Log.d(MyGlobal.TAG, "from service...");
+			 if (uri == null) {
+				 Log.d(MyGlobal.TAG, "url null return!");
+				 return;
+			 }
              if (uri.getScheme().equals("file")) {
             	 String path = uri.getPath();            	 
 	             if(USB_UDISK_STRING.equals(path)) {
-	            	if (isNew(context)) {
-		            	Install install = new Install();
-		 				install.setType(Install.TYPE_WITH_PM_INSTALL);
-		 				install.setInstallPath(USB_INFO);
-		 				install.start();
-		 			}
+	            	//isNew(context);
+	            	Install install = new Install();
+	 				install.setType(Install.TYPE_WITH_PM_INSTALL);
+	 				install.setInstallPath(USB_INFO);
+	 				install.start();
 	             }
              }
         }  

@@ -85,7 +85,7 @@ public class Install extends Thread {
 				// TODO: handle exception
 				e.printStackTrace();
 			} finally {
-				if (localProcess != null) {
+				if (localProcess.exitValue() != 0) {
 					localProcess.destroy();
 				}
 				File currentApk = new File(installPath);
@@ -121,7 +121,7 @@ public class Install extends Thread {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally {
-				if (localProcess != null) {
+				if (localProcess.exitValue() != 0) {
 					localProcess.destroy();
 				}
 			}	
