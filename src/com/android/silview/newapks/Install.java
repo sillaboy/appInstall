@@ -23,7 +23,7 @@ public class Install extends Thread {
 	
 	/*with pm */
 	private String CMD_INSTALL = "pm install -r -f";
-	private String CMD_UNINSTALL = "pm install -k";
+	private String CMD_UNINSTALL = "pm uninstall -k";
 	
 	public Install(){		
 	}
